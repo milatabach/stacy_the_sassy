@@ -1,21 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How to Use a Camera</title>
-  <link rel="stylesheet" href="../static/main.css" />
+{% extends "layout.html" %}
 
-</head>
-
+{% block content %}
 <body>
   <div class="container">
     <h1>How to Use a Camera</h1>
-    <img src="../images/home.png" alt="Camera Image" />
+    <img src="{{ url_for('static', filename='images/home.png') }}" alt="Camera Image" />
     <div class="buttons">
-      <button class="homepage_but" onclick="location.href='learning.html'">Start Lesson</button>
-      <button class="homepage_but" onclick="location.href='quiz.html'">Go to Quizz</button>
+      <button class="homepage_but" onclick="location.href='{{ url_for('learning') }}'">Start Lesson</button>
+      <button class="homepage_but" onclick="location.href='{{ url_for('quiz') }}'">Go to Quiz</button>
     </div>
   </div>
-</body>
-</html>
+
+{% endblock %}
+
+
