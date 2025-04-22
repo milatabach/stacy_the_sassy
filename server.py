@@ -25,6 +25,19 @@ def shutter():
 def quiz():
     return render_template('quiz.html')
 
+@app.route('/back')
+def back_of_camera():
+    return render_template('back_of_camera.html')
+
+@app.route('/aperture')
+def aperture():
+    return render_template('aperture.html')
+
+@app.route('/iso')
+def iso():
+    return render_template('iso.html')
+
+
 if __name__ == '__main__':
 	app.run(debug=True)
 
