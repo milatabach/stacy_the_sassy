@@ -24,14 +24,18 @@
         <img src="../images/camera.png" alt="Camera" class="img-fluid w-100 camera-img" style="max-width: 800px;" />
 
         <!-- Star Buttons (manually positioned over image) -->
-        <button class="star-btn position-absolute" style="top: 160px; left: 80px;" onclick="showDescription('ISO')">⭐</button>
+        <button class="star-btn position-absolute" style="top: 160px; left: 80px;" onclick="showDescription('Sh')">⭐</button>
         <button class="star-btn position-absolute" style="top: 120px; left: 100px;" onclick="showDescription('photo')">⭐</button>
         <button class="star-btn position-absolute" style="top: 300px; right: 150px;" onclick="showDescription('Lense')">⭐</button>
 
         <!-- Description Cards -->
-        <div id="ISO" class="desc-card d-none">
-          <button class="close-btn" onclick="closeDescription('ISO')">×</button>
-          <p>This is where the ISO... </p>
+        <div id="Sh" class="desc-card d-none">
+          <button class="close-btn" onclick="closeDescription('Sh')">×</button>
+          <p>This is where yo control the shutter speed - this is the length of time
+             the camera's shutter stays open, allowing light to reach the sensor and create an image. </p>
+             <a href="shutter.html" class="btn btn-light fw-bold px-4 py-2">
+               Learn more.
+              </a>
         </div>
         <div id="photo" class="desc-card d-none">
           <button class="close-btn" onclick="closeDescription('photo')">×</button>
