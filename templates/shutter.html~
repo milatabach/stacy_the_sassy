@@ -7,9 +7,9 @@
     <br> 
     <br> 
 
-    <a href="camera.html" class="btn btn-light fw-bold px-4 py-2">
-        Return
-    </a>
+    <a href="{{ url_for('camera') }}" class="btn btn-light fw-bold px-4 py-2">
+    Return
+</a>
 
 {% endblock %}
 
