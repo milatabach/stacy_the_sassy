@@ -22,7 +22,7 @@
           <button class="close-btn" onclick="closeDescription('Sh')">×</button>
           <p>This is where yo control the shutter speed - this is the length of time
              the camera's shutter stays open, allowing light to reach the sensor and create an image. </p>
-             <a href="{{ url_for('shutter') }}" class="btn btn-light fw-bold px-4 py-2">
+             <a href="shutter.html" class="btn btn-light fw-bold px-4 py-2">
                Learn more.
               </a>
         </div>

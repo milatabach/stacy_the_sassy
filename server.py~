@@ -16,9 +16,14 @@ def camera():
 def learning():
 	return render_template('learning.html')
 
+
 @app.route('/shutter')
 def shutter():
 	return render_template('shutter.html')
+
+@app.route('/quiz')
+def quiz():
+    return render_template('quiz.html')
 
 if __name__ == '__main__':
 	app.run(debug=True)

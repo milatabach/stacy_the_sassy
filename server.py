@@ -16,6 +16,7 @@ def camera():
 def learning():
 	return render_template('learning.html')
 
+
 @app.route('/shutter')
 def shutter():
 	return render_template('shutter.html')
