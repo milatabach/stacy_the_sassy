@@ -6,13 +6,10 @@
     <p>Choose a feature to learn about:</p>
 
     <div class="d-flex justify-content-center gap-4 mt-4">
-      <a href="{{ url_for('aperture') }}" class="btn btn-secondary fw-bold px-4 py-2">
-        Aperture
-      </a>
-      <a href="{{ url_for('iso') }}" class="btn btn-secondary fw-bold px-4 py-2">
-        ISO
-      </a>
+      <a href="{{ url_for('aperture') }}" class="feature-btn aperture-btn">Aperture</a>
+      <a href="{{ url_for('iso') }}" class="feature-btn iso-btn">ISO</a>
     </div>
+       
   </div>
 {% endblock %}
 
