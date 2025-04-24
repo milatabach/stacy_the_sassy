@@ -21,6 +21,10 @@ def learning():
 def shutter():
 	return render_template('shutter.html')
 
+@app.route('/shutter_test')
+def shutter_test():
+	return render_template('shutter_test.html')
+
 @app.route('/quiz')
 def quiz():
     return render_template('quiz.html')

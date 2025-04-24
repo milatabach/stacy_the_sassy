@@ -5,6 +5,24 @@
     <h1>Back of the Camera</h1>
     <p>Choose a feature to learn about:</p>
 
+
+        <!-- Camera Image -->
+        <img src="../static/images/back_camera.png" alt="Camera" class="img-fluid w-100 camera-img" style="max-width: 800px;" />
+
+        <!-- Star Buttons (manually positioned over image) -->
+        <button class="star-btn position-absolute" style="top: 300px; left: 80px;" onclick="showDescription('Menu')">⭐</button>
+
+        <!-- Description Cards -->
+        <div id="Menu" class="desc-card d-none">
+          <button class="close-btn" onclick="closeDescription('Menu')">×</button>
+          <p>If you click in menu you will be able to change many settings. This is where you change the iso.  </p>
+             <a href="menu.html" class="btn btn-light fw-bold px-4 py-2">
+                See more of menu [THIS IS TO DO]
+              </a>
+        </div>
+
+
+    <h1> ISO, aperture, and shutter speed are the three core settings that control camera exposure. Lets learn about aperture and ISO </h1>
     <div class="d-flex justify-content-center gap-4 mt-4">
       <a href="{{ url_for('aperture') }}" class="feature-btn aperture-btn">Aperture</a>
       <a href="{{ url_for('iso') }}" class="feature-btn iso-btn">ISO</a>

@@ -1,0 +1,23 @@
+<script>
+    const img = document.getElementById('quiz-image');
+    const sh = document.getElementById('shutter');
+    const shVal = document.getElementById('sh-val');
+  
+    function updateImage() {
+      const speed = parseFloat(sh.value);
+      shVal.textContent = `1/${Math.round(1/speed)}`;
+  
+      let blurPx = 0;
+      if (speed > 0.025) {
+        // Start adding blur as it gets slower than 1/40 sec
+        blurPx = (speed - 0.025) * 200; // gradual increase
+        blurPx = Math.min(10, blurPx);  // cap max blur
+      }
+  
+      img.style.filter = `blur(${blurPx.toFixed(2)}px)`;
+    }
+  
+    sh.addEventListener('input', updateImage);
+    updateImage();
+  </script>
+  
