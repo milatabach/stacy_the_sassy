@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container py-5" style="background-color: black; color: white;">
+  <h1 class="text-center mb-4">Aperture and Exposure</h1>
+
+  <p class="lead text-center mb-4">
+    More light entering through the aperture not only brightens the image but also increases exposure.
+    The following picture shows different levels of exposure: the darkest image has the lowest exposure and the smallest aperture, while the brightest image has the highest exposure and the largest aperture.
+  </p>
+
+  <div class="text-center mb-5">
+    <img src="https://static.bhphotovideo.com/explora/sites/default/files/speedvalue_1.jpg" 
+         alt="Exposure examples" class="img-fluid rounded shadow mb-2" style="max-width: 700px;" />
+  </div>
+
+  <div class="text-center">
+    <a href="{{ url_for('back_of_camera') }}" class="btn btn-secondary m-2">Back to Back of Camera</a>
+  </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container py-5">
+  <h1 class="text-center mb-4">Understanding Aperture</h1>
+
+  <p class="lead text-center mb-5">
+    Aperture controls how wide the camera’s lens opens to let in light. It’s measured in f-stops like <strong>f/2.8</strong> or <strong>f/16</strong>. 
+    A wider aperture (lower f-stop) lets in more light and creates a shallow depth of field, blurring the background. 
+    A narrower aperture (higher f-stop) keeps more of the image in focus.
+  </p>
+
+  <!-- Diagram Section -->
+  <div class="text-center mb-5">
+    <img src="{{ url_for('static', filename='images/aperture_diagram.png') }}" 
+         alt="Aperture diagram" class="img-fluid rounded shadow mb-2" style="max-width: 700px;" />
+    <p class="small text-muted">
+      This diagram shows how different f-stop values affect the size of the aperture and the resulting depth of field.
+    </p>
+  </div>
+
+  <!-- Example Photo Section -->
+  <div class="text-center mb-5">
+    <img src="{{ url_for('static', filename='images/aperture_example.png') }}" 
+         alt="Aperture depth of field example" class="img-fluid rounded shadow mb-2" style="max-width: 700px;" />
+    <p class="small text-muted">
+      In this example, a wide aperture creates a soft, blurry background that draws focus to the subject in the foreground.
+    </p>
+  </div>
+
+  <div class="text-center">
+    <a href="{{ url_for('iso') }}" class="next-btn">
+      Next: ISO →
+    </a>
+  </div>
+</div>
+{% endblock %}
