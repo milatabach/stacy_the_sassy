@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container py-5" style="background-color: black; color: white;">
+  <h1 class="text-center mb-4">Understanding Shutter Speed Values</h1>
+
+  <p class="lead text-center mb-4">
+    Shutter speed values are typically written as fractions, like 1/125 or 1/1000. The fraction represents the length of time the shutter is open. For example, 1/125 means the shutter is open for one one-hundred-twenty-fifth of a second.
+  </p>
+
+  <p class="lead text-center mb-4">
+    A good general shutter speed for handheld photography is 1/125 or faster. Faster shutter speeds, like 1/500 or 1/1000, are used to freeze fast motion, while slower speeds can introduce motion blur.
+  </p>
+
+  <p class="lead text-center mb-4">
+    As an extra tip for filmmakers, the 180-degree shutter rule suggests setting your shutter speed to be roughly double your frame rate. For example, if you are shooting at 24 frames per second, you would set your shutter speed to about 1/48 or 1/50.
+  </p>
+
+  <div class="text-center">
+    <a href="{{ url_for('back_of_camera') }}" class="btn btn-secondary m-2">Back to Back of Camera</a>
+    <a href="{{ url_for('shutter') }}" class="btn btn-primary m-2">Next</a>
+  </div>
+</div>
+{% endblock %}
+
