@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container text-center py-5">
-  <h1 class="mb-4">Shutter Speed Recap</h1>
+  <h1 class="mb-4">Shutter Speed</h1>
 
   <img src="{{ url_for('static', filename='images/shutter.png') }}" 
        alt="Shutter speed diagram" 
@@ -14,9 +14,10 @@
   </p>
 
   <div class="text-center">
-    <a href="{{ url_for('camera') }}" class="back-btn">
+    <a href="{{ url_for('iso') }}" class="back-btn">
       ← Back 
     </a>
+    <a href="{{ url_for('quiz') }}" class="quiz-btn">Take the Quiz</a>
   </div>
 </div>
 {% endblock %}

@@ -21,6 +21,29 @@ def learning():
 def shutter():
 	return render_template('shutter.html')
 
+# Route for Shutter Definition
+@app.route('/shutter_def')
+def shutter_def():
+    return render_template('shutter_def.html')
+
+# Route for Shutter and Exposure
+@app.route('/shutter_exposure')
+def shutter_exposure():
+    return render_template('shutter_exposure.html')
+
+# Route for Shutter and Motion
+@app.route('/shutter_motion')
+def shutter_motion():
+    return render_template('shutter_motion.html')
+
+@app.router('/shutter_opening')
+def shutter_opening():
+	return render_template('shutter_opening.html')
+
+@app.route('/shutter_test')
+def shutter_test():
+	return render_template('shutter_test.html')
+
 @app.route('/quiz')
 def quiz():
     return render_template('quiz.html')
@@ -33,9 +56,13 @@ def back_of_camera():
 def aperture():
     return render_template('aperture.html')
 
-@app.route('/iso')
-def iso():
-    return render_template('iso.html')
+@app.route('/iso_grain')
+def iso_grain():
+    return render_template('iso_grain.html')
+
+@app.route('/iso_opening')
+def iso_opening():
+	return render_template('iso_opening.html')
 
 @app.route('/aperturehome')
 def aperture_opening():
@@ -49,7 +76,7 @@ def aperture2():
 def aperture3():
 	return render_template('aperture3.html')
 
-@app.route('aperturedef')
+@app.route('/aperturedef')
 def aperture_def():
 	return render_template('aperture_def.html')
 
