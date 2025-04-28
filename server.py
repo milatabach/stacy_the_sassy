@@ -37,6 +37,18 @@ def aperture():
 def iso():
     return render_template('iso.html')
 
+@app.route('/aperture2')
+def aperture2():
+    return render_template('aperture2.html')
+
+@app.route('/aperture3')
+def aperture3():
+    return render_template('aperture3.html')
+
+@app.route('/aperturehome')
+def aperturehome():
+    return render_template('aperturehome.html')
+
 
 if __name__ == '__main__':
 	app.run(debug=True)
