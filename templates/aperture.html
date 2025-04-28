@@ -1,8 +1,12 @@
-<div id="Aperture" class="desc-card d-none">
+<div id="Aperture Recap" class="desc-card d-none">
   <button class="close-btn" onclick="closeDescription('Aperture')">×</button>
+  
   <p>
-    Aperture controls how wide the camera’s lens opens to let in light. It’s measured in f-stops like f/2.8 or f/16. A wider aperture (lower f-stop) lets in more light and creates a shallow depth of field, blurring the background. A narrower aperture (higher f-stop) keeps more of the image in focus.
+    Aperture controls how wide the camera’s lens opens to let in light. It’s measured in f-stops like f/2.8 or f/16. 
+    A wider aperture (lower f-stop) lets in more light and creates a shallow depth of field, blurring the background. 
+    A narrower aperture (higher f-stop) keeps more of the image in focus.
   </p>
+
   <!-- Diagram Explaining Aperture -->
   <div class="mb-3">
     <img src="{{ url_for('static', filename='images/aperture_diagram.png') }}" alt="Aperture diagram" class="img-fluid mb-2" />
@@ -10,15 +14,10 @@
       This diagram shows how different f-stop values affect the size of the aperture and the resulting depth of field.
     </div>
   </div>
-  <!-- Example Photo Showing Aperture Effect -->
-  <div class="mb-3">
-    <img src="{{ url_for('static', filename='images/aperture_example.png') }}" alt="Aperture depth of field example" class="img-fluid mb-2" />
-    <div class="small text-muted">
-      In this example, a wide aperture creates a soft, blurry background that draws focus to the subject in the foreground.
-    </div>
-  </div>
-  <a href="{{ url_for('aperture') }}" class="btn btn-light fw-bold px-4 py-2">
-    Learn more.
+
+  <!-- Back to Back of Camera Button -->
+  <a href="{{ url_for('back_of_camera') }}" class="btn btn-light fw-bold px-4 py-2">
+    Back to Back of Camera
   </a>
 </div>
 
