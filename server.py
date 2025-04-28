@@ -57,6 +57,10 @@ def aperture3():
 def aperture_def():
 	return render_template('aperture_def.html')
 
+@app.route('/match')
+def match():
+	return render_template('match.html')
+
 if __name__ == '__main__':
 	app.run(debug=True)
 

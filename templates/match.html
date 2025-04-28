@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <h1>Camera Settings: Match the Definition!</h1>
+
+  <div class="quiz-container">
+    <form id="quizForm">
+      <p><strong>1. Controls how much light enters the lens.</strong></p>
+      <select name="q1">
+        <option value="">--Choose an answer--</option>
+        <option value="Aperture">Aperture</option>
+        <option value="ISO">ISO</option>
+        <option value="Shutter Speed">Shutter Speed</option>
+      </select>
+
+      <p><strong>2. Controls how sensitive the camera is to light.</strong></p>
+      <select name="q2">
+        <option value="">--Choose an answer--</option>
+        <option value="Aperture">Aperture</option>
+        <option value="ISO">ISO</option>
+        <option value="Shutter Speed">Shutter Speed</option>
+      </select>
+
+      <p><strong>3. Controls how long the sensor is exposed to light.</strong></p>
+      <select name="q3">
+        <option value="">--Choose an answer--</option>
+        <option value="Aperture">Aperture</option>
+        <option value="ISO">ISO</option>
+        <option value="Shutter Speed">Shutter Speed</option>
+      </select>
+
+      <button type="button" onclick="checkAnswers()">Submit Answers</button>
+    </form>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function checkAnswers() {
+      const form = document.forms['quizForm'];
+      let score = 0;
+
+      if (form['q1'].value === 'Aperture') score++;
+      if (form['q2'].value === 'ISO') score++;
+      if (form['q3'].value === 'Shutter Speed') score++;
+
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = `You got ${score} out of 3 correct!`;
+    }
+  </script>
+
+{% endblock %}
