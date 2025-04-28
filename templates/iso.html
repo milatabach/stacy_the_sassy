@@ -29,8 +29,11 @@
     </p>
   </div>
 
-  <!-- Next Button -->
+  <!-- Next and Back Button -->
   <div class="text-center">
+    <a href="{{ url_for('back_of_camera') }}" class="back-btn">
+      ← Back 
+    </a>
     <a href="{{ url_for('shutter') }}" class="next-btn">
       Next: Shutter Speed →
     </a>

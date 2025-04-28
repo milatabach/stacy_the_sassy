@@ -1,76 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Camera Quiz – Question 1</title>
-  <link rel="stylesheet" href="/static/main.css" />
-  <style>
-    .slider-container { max-width: 600px; margin: 20px auto; text-align: left; }
-    .slider-container label { display: block; margin-bottom: 5px; }
-    .slider-container input[type=range] { width: 100%; }
-    #quiz-image { max-width: 100%; border: 5px solid #333; border-radius: 10px; }
-  </style>
-</head>
-<body>
-  <div class="container text-center py-4">
-    <h1>Question 1</h1>
-    <p>Adjust the settings until Stacy is happy with her beach picture.</p>
-    <!-- Character / Scene Image -->
-    <img id="quiz-image" src="/static/images/Quiz_1.png" alt="Stacy at the beach" />
+{% extends "layout.html" %}
 
-    <!-- Controls -->
-    <div class="slider-container">
-      <label for="aperture">Aperture (f-stop): <span id="ap-val">5.6</span></label>
-      <input type="range" id="aperture" min="1.8" max="22" step="0.1" value="5.6" />
+{% block content %}
+<div class="container text-center py-5">
+  <h1 class="mb-4">Question 1</h1>
+  <p>Adjust the settings until Stacy is happy with her beach picture.</p>
 
-      <label for="shutter">Shutter Speed (sec): <span id="sh-val">1/125</span></label>
-      <input type="range" id="shutter" min="0.001" max="1" step="0.001" value="0.008" />
+  <!-- Character / Scene Image -->
+  <img id="quiz-image" src="{{ url_for('static', filename='images/Quiz_1.png') }}" alt="Stacy at the beach" class="img-fluid rounded shadow mb-4" style="max-width: 700px;" />
 
-      <label for="iso">ISO: <span id="iso-val">100</span></label>
-      <input type="range" id="iso" min="100" max="3200" step="100" value="100" />
+  <!-- Controls -->
+  <div class="slider-container mx-auto" style="max-width: 600px; text-align: left;">
+    <label for="aperture">Aperture (f-stop): <span id="ap-val">5.6</span></label>
+    <input type="range" id="aperture" min="1.8" max="22" step="0.1" value="5.6" class="form-range mb-3" />
 
-      <label for="ev">EV Compensation: <span id="ev-val">0</span></label>
-      <input type="range" id="ev" min="-3" max="+3" step="0.1" value="0" />
-    </div>
+    <label for="shutter">Shutter Speed (sec): <span id="sh-val">1/125</span></label>
+    <input type="range" id="shutter" min="0.001" max="1" step="0.001" value="0.008" class="form-range mb-3" />
 
-    <!-- Navigation -->
-    <div class="mt-4">
-      <button class="btn btn-light" onclick="location.href='/quiz/2'">Next →</button>
-    </div>
+    <label for="iso">ISO: <span id="iso-val">100</span></label>
+    <input type="range" id="iso" min="100" max="3200" step="100" value="100" class="form-range mb-3" />
+
+    <label for="ev">EV Compensation: <span id="ev-val">0</span></label>
+    <input type="range" id="ev" min="-3" max="3" step="0.1" value="0" class="form-range mb-3" />
   </div>
 
-  <script>
-    // grab elements
-    const img = document.getElementById('quiz-image');
-    const ap = document.getElementById('aperture');
-    const sh = document.getElementById('shutter');
-    const iso = document.getElementById('iso');
-    const ev = document.getElementById('ev');
-    const apVal = document.getElementById('ap-val');
-    const shVal = document.getElementById('sh-val');
-    const isoVal = document.getElementById('iso-val');
-    const evVal = document.getElementById('ev-val');
+  <!-- Navigation -->
+  <div class="text-center">
+    <a href="{{ url_for('home') }}" class="back-btn">
+      ← Home 
+    </a>
+    <a href="{{ url_for('quiz') }}" class="next-btn">
+      Next →
+    </a>
+  </div>
+</div>
 
-    function updateImage() {
-      // display numeric values
-      apVal.textContent = ap.value;
-      shVal.textContent = `1/${Math.round(1/sh.value)}`;
-      isoVal.textContent = iso.value;
-      evVal.textContent = ev.value;
+<script>
+  const img = document.getElementById('quiz-image');
+  const ap = document.getElementById('aperture');
+  const sh = document.getElementById('shutter');
+  const iso = document.getElementById('iso');
+  const ev = document.getElementById('ev');
+  const apVal = document.getElementById('ap-val');
+  const shVal = document.getElementById('sh-val');
+  const isoVal = document.getElementById('iso-val');
+  const evVal = document.getElementById('ev-val');
 
-      // basic CSS filters mapping (example)
-      const brightness = 1 + (ev.value/3);
-      const contrast = 1 + (iso.value - 100) / 800;
-      const blurPx = Math.max(0, (5.6 - ap.value) / 2);
+  function updateImage() {
+    apVal.textContent = ap.value;
+    shVal.textContent = `1/${Math.round(1/sh.value)}`;
+    isoVal.textContent = iso.value;
+    evVal.textContent = ev.value;
 
-      img.style.filter = `brightness(${brightness}) contrast(${contrast}) blur(${blurPx}px)`;
-    }
+    const brightness = 1 + (ev.value/3);
+    const contrast = 1 + (iso.value - 100) / 800;
+    const blurPx = Math.max(0, (5.6 - ap.value) / 2);
 
-    // attach listeners
-    [ap, sh, iso, ev].forEach(el => el.addEventListener('input', updateImage));
-    // init
-    updateImage();
-  </script>
-</body>
-</html>
+    img.style.filter = `brightness(${brightness}) contrast(${contrast}) blur(${blurPx}px)`;
+  }
+
+  [ap, sh, iso, ev].forEach(el => el.addEventListener('input', updateImage));
+  updateImage();
+</script>
+{% endblock %}

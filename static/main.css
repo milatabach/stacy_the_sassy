@@ -126,38 +126,52 @@ body {
 }
 
 /* quiz and lesson buttons */
-.homepage_but {
-  padding: 1rem 2rem;
-  margin: 1rem;
-  font-size: 1.25rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
 
 .lesson-btn {
+  display: inline-block;
   background-color: #add8e6;
   color: #ffffff;
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 0.75rem 2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 2rem auto;
+  text-align: center;
 }
 
 .lesson-btn:hover {
   background-color: #91c4dc;
+  transform: scale(1.05);
+  text-decoration: none;
 }
 
 .quiz-btn {
-  background-color: #ffa500;
+  display: inline-block;
+  background-color: #c7385b;
   color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 0.75rem 2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 2rem auto;
+  text-align: center;
 }
 
 .quiz-btn:hover {
-  background-color: #e69500;
+  background-color: #d96582;
+  transform: scale(1.05);
+  text-decoration: none;
 }
 
+/* next button */
 .next-btn {
   display: inline-block;
-  background-color: #8ae654; 
+  background-color: #add8e6; 
   color: #fff;
   font-size: 1.25rem;
   font-weight: bold;
@@ -170,11 +184,31 @@ body {
 }
 
 .next-btn:hover {
-  background-color: #74cf49;
+  background-color: #91c4dc;
   transform: scale(1.05);
   text-decoration: none;
 }
 
+/* back button */
+.back-btn {
+  display: inline-block;
+  background-color: #ffff; 
+  color: #add8e6;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 0.75rem 2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.back-btn:hover {
+  background-color: #c3dfec;
+  transform: scale(1.05);
+  text-decoration: none;
+}
 /* iso and features buttons */
 .feature-btn {
   display: inline-block;
@@ -189,56 +223,50 @@ body {
 }
 
 .aperture-btn {
-  background-color: #b88df5;
+  background-color: #d96582;
 }
 
 .aperture-btn:hover {
-  background-color: #9e71e6;
+  background-color: #edaebe;
   transform: scale(1.05);
   box-shadow: 0 0 12px rgba(184, 141, 245, 0.6);
 }
 
 .iso-btn {
-  background-color: #ffa07a;
+  background-color: #91c4dc;
 }
 
 .iso-btn:hover {
-  background-color: #ff865b;
+  background-color: #c0d7e1;
   transform: scale(1.05);
   box-shadow: 0 0 12px rgba(255, 160, 122, 0.6);
 }
 
-/* return and quiz buttons*/
-.return-btn {
-  background-color: #f3f3f3;
-  color: #333;
+
+/* navigate button*/
+.nav-btn {
+  background-color: #d96582;
+  color: #fff;
   font-size: 1.1rem;
   font-weight: bold;
   padding: 0.75rem 1.75rem;
   border-radius: 10px;
   text-decoration: none;
-  border: 2px solid #8ae654;
+  border: 2px solid #c7385b;
   transition: all 0.3s ease;
 }
 
-.return-btn:hover {
-  background-color: #e1e1e1;
+.nav-btn:hover {
+  background-color: #e3adbb;
   transform: scale(1.05);
 }
 
-.quiz-btn {
-  background-color: #ffa500;
-  color: white;
-  font-size: 1.1rem;
-  font-weight: bold;
-  padding: 0.75rem 1.75rem;
-  border-radius: 10px;
-  text-decoration: none;
-  border: none;
-  transition: all 0.3s ease;
+.lesson-section {
+  font-size: 0.8rem; 
+  padding-left: 2.5rem; 
 }
 
-.quiz-btn:hover {
-  background-color: #e69500;
-  transform: scale(1.05);
+.back-camera-section {
+  font-size: 0.6rem; 
+  padding-left: 4rem; 
 }
