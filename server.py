@@ -1,20 +1,18 @@
-from flask import Flask
-from flask import render_template
-from flask import Response, request, jsonify
-app = Flask(__name__)
+from flask import Flask, redirect, render_template
 
+app = Flask(__name__)
 
 @app.route('/')
 def home():
-	return render_template('home.html')
+    return render_template('home.html')
 
 @app.route('/camera')
 def camera():
-	return render_template('camera.html')
+    return render_template('camera.html')
 
 @app.route('/learning')
 def learning():
-	return render_template('learning.html')
+    return render_template('learning.html')
 
 @app.route('/learning2')
 def learning2():
@@ -23,35 +21,29 @@ def learning2():
 
 @app.route('/shutter')
 def shutter():
-	return render_template('shutter.html')
-
-# Route for Shutter Definition
-@app.route('/shutter_def')
-def shutter_def():
-    return render_template('shutter_def.html')
-
-# Route for Shutter and Exposure
-@app.route('/shutter_exposure')
-def shutter_exposure():
-    return render_template('shutter_exposure.html')
-
-# Route for Shutter and Motion
-@app.route('/shutter_motion')
-def shutter_motion():
-    return render_template('shutter_motion.html')
-
-@app.route('/shutter_opening')
-def shutter_opening():
-	return render_template('shutter_opening.html')
-
-@app.route('/shutter_test')
-def shutter_test():
-	return render_template('shutter_test.html')
+    return render_template('shutter.html')
 
 @app.route('/quiz')
 def quiz():
-    return render_template('quiz.html')
+    return redirect('/quiz/start')
 
+# 3) Dynamic handler for Stacy quizzes 1–5, then results on 6
+@app.route('/quiz/<int:qid>')
+def quiz_page(qid):
+    if 1 <= qid <= 5:
+        return render_template(f'quiz_{qid}.html')
+    elif qid == 6:
+        return redirect('/quiz/results')
+    else:
+        # any out-of-range id goes back to the MCQ
+        return redirect('/quiz/start')
+
+# 4) Final results
+@app.route('/quiz/results')
+def quiz_results():
+    return render_template('results.html')
+
+# other static routes
 @app.route('/back')
 def back_of_camera():
     return render_template('back_of_camera.html')
@@ -89,5 +81,4 @@ def match():
 	return render_template('match.html')
 
 if __name__ == '__main__':
-	app.run(debug=True)
-
+    app.run(debug=True)
