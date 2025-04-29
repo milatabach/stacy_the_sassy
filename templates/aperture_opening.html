@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container py-5">
+  <h1 class="text-center mb-4">Introduction to Aperture</h1>
+
+  <p class="lead text-center mb-4">
+    Aperture refers to the opening in the lens of the camera that allows light to pass through.
+  </p>
+  <p class = "lead text-center mb-4">
+   A smaller aperture means less light passes through the lens, while a larger aperture allows more light to enter.
+  </p>
+
+  <div class="text-center mb-5">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Aperture-Lens.gif" 
+         alt="Camera aperture opening" class="img-fluid rounded shadow mb-2" style="max-width: 700px;" />
+  </div>
+
+  <div class="text-center">
+    <a href="{{ url_for('back_of_camera') }}" class="btn btn-secondary m-2">Back to Back of Camera</a>
+    <a href="{{ url_for('aperture2') }}" class="btn btn-primary m-2">Next</a>  
+</div>
+</div>
+{% endblock %}
+

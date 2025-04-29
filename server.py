@@ -14,6 +14,7 @@ def camera():
 def learning():
     return render_template('learning.html')
 
+
 @app.route('/shutter')
 def shutter():
     return render_template('shutter.html')
@@ -53,9 +54,10 @@ def back_of_camera():
 def aperture():
     return render_template('aperture.html')
 
-@app.route('/iso')
-def iso():
-    return render_template('iso.html')
+@app.route('/iso_grain')
+def iso_grain():
+    return render_template('iso_grain.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
