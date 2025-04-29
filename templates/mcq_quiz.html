@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Camera Quiz – Warm-up</title>
+  <link rel="stylesheet" href="/static/main.css" />
+  <style>
+    .container { max-width: 700px; margin: 0 auto; }
+    .btn-next { opacity: 0.5; pointer-events: none; }
+    .text-start select { width: 100%; padding: 0.375rem 0.75rem; margin-bottom: 1rem; border-radius: 0.25rem; border: 1px solid #ccc; background: #fff; color: #000; }
+  </style>
+</head>
+<body class="bg-black text-white">
+  <div class="container text-center py-5">
+    <h1 class="mb-4">Camera Settings: Match the Definition!</h1>
+
+    <form id="quizForm" class="text-start mx-auto" style="max-width:400px;">
+      <p><strong>1. Controls how much light enters the lens.</strong></p>
+      <select name="q1">
+        <option value="">--Choose an answer--</option>
+        <option value="Aperture">Aperture</option>
+        <option value="ISO">ISO</option>
+        <option value="Shutter Speed">Shutter Speed</option>
+      </select>
+
+      <p><strong>2. Controls how sensitive the camera is to light.</strong></p>
+      <select name="q2">
+        <option value="">--Choose an answer--</option>
+        <option value="Aperture">Aperture</option>
+        <option value="ISO">ISO</option>
+        <option value="Shutter Speed">Shutter Speed</option>
+      </select>
+
+      <p><strong>3. Controls how long the sensor is exposed to light.</strong></p>
+      <select name="q3">
+        <option value="">--Choose an answer--</option>
+        <option value="Aperture">Aperture</option>
+        <option value="ISO">ISO</option>
+        <option value="Shutter Speed">Shutter Speed</option>
+      </select>
+    </form>
+
+    <div class="mt-4">
+      <button id="checkBtn" class="btn btn-light">Submit Answers</button>
+      <a href="/" class="btn btn-outline-light ms-2">← Home</a>
+      <button id="nextBtn" onclick="location.href='/quiz/1'" class="btn btn-light btn-next ms-2" disabled>Next → Question 1</button>
+    </div>
+
+    <div id="feedback" class="mt-3 feedback"></div>
+  </div>
+
+  <script>
+    const MAX_TRIES = 3;
+    let triesLeft = MAX_TRIES;
+    const checkBtn = document.getElementById('checkBtn');
+    const nextBtn  = document.getElementById('nextBtn');
+    const feedback = document.getElementById('feedback');
+    const form     = document.getElementById('quizForm');
+
+    checkBtn.addEventListener('click', () => {
+      if (triesLeft < 0 || checkBtn.disabled) return;
+
+      const a = form['q1'].value;
+      const b = form['q2'].value;
+      const c = form['q3'].value;
+      let score = 0;
+      if (a === 'Aperture') score++;
+      if (b === 'ISO') score++;
+      if (c === 'Shutter Speed') score++;
+
+      if (score === 3) {
+        sessionStorage.setItem('mcqScore', '1');
+        feedback.textContent = '✅ All correct!';
+        feedback.style.color = 'lightgreen';
+        finish();
+      } else {
+        triesLeft--;
+        if (triesLeft > 0) {
+          feedback.textContent = `❌ ${score}/3. ${triesLeft} tries left.`;
+          feedback.style.color = '#ffcc00';
+        } else {
+          sessionStorage.setItem('mcqScore', score > 0 ? '1' : '0');
+          feedback.textContent = `⚠️ Final score ${score}/3. Moving on.`;
+          feedback.style.color = '#ff4d4d';
+          finish();
+        }
+      }
+    });
+
+    function finish() {
+      checkBtn.disabled = true;
+      nextBtn.disabled = false;
+      nextBtn.classList.remove('btn-next');
+    }
+  </script>
+</body>
+</html>
