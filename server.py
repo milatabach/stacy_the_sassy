@@ -1,4 +1,6 @@
-from flask import Flask, redirect, render_template
+from flask import Flask
+from flask import render_template
+from flask import Response, request, jsonify
 
 app = Flask(__name__)
 
@@ -58,6 +60,17 @@ def aperture():
 def iso_grain():
     return render_template('iso_grain.html')
 
+@app.route('/aperture2')
+def aperture2():
+    return render_template('aperture2.html')
+
+@app.route('/aperture3')
+def aperture3():
+    return render_template('aperture3.html')
+
+@app.route('/aperturehome')
+def aperturehome():
+    return render_template('aperturehome.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
