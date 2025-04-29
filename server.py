@@ -16,6 +16,10 @@ def camera():
 def learning():
     return render_template('learning.html')
 
+@app.route('/learning2')
+def learning2():
+    return render_template('learning2.html')
+
 
 @app.route('/shutter')
 def shutter():
@@ -67,10 +71,6 @@ def aperture2():
 @app.route('/aperture3')
 def aperture3():
     return render_template('aperture3.html')
-
-@app.route('/aperturehome')
-def aperturehome():
-    return render_template('aperturehome.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
