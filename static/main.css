@@ -1,5 +1,13 @@
+/* Color Variables */
+:root {
+  --base-color: black;
+  --accent-color: #d96582;
+  --text: white;
+}
+
+/* General Styles */
 body {
-  background-color: #000;
+  background-color: var(--base-color);
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
@@ -102,31 +110,8 @@ body {
   color: #ff4d4d;
 }
 
-/* Site Banner for top of the page */
-.site-banner {
-  background-color: #ffffff;
-  padding: 1rem 0;
-  text-align: center;
-  width: 100%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.site-banner a,
-.banner-link {
-  color: #c7385b;
-  text-decoration: none;
-  font-size: 2rem;
-  font-weight: bold;
-  font-family: sans-serif;
-}
-
-.site-banner a:hover,
-.banner-link:hover {
-  text-decoration: underline;
-}
 
 /* quiz and lesson buttons */
-
 .lesson-btn {
   display: inline-block;
   background-color: #add8e6;
@@ -243,23 +228,6 @@ body {
 }
 
 
-/* navigate button*/
-.nav-btn {
-  background-color: #d96582;
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: bold;
-  padding: 0.75rem 1.75rem;
-  border-radius: 10px;
-  text-decoration: none;
-  border: 2px solid #c7385b;
-  transition: all 0.3s ease;
-}
-
-.nav-btn:hover {
-  background-color: #e3adbb;
-  transform: scale(1.05);
-}
 
 .lesson-section {
   font-size: 0.8rem; 
@@ -269,4 +237,61 @@ body {
 .back-camera-section {
   font-size: 0.6rem; 
   padding-left: 4rem; 
+}
+
+
+
+/* NAVIGATION CSSS */
+
+
+/* Site Banner for top of the page */
+.site-banner {
+  background-color: black;
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.site-banner a,
+.banner-link {
+  color: white;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.site-banner a:hover,
+.banner-link:hover {
+  color: var(--accent-color);
+}
+
+
+/* NAV BAR*/
+.nav-btn {
+  background-color: black;
+  color: white;
+  font-size: 0.75 rem;
+}
+
+.nav-btn:hover {
+  color: var(--accent-color);
+}
+
+
+/*DROP DOWN MENU*/
+.dropdown-menu {
+  background-color: black;
+  font-size: 0.3 rem;
+}
+
+.dropdown-item {
+  color: white !important;
+  font-size: 12px !important;
+  font-weight: normal !important;
+}
+
+.dropdown-item:hover {
+  color: var(--accent-color) !important;
+  background-color: rgba(255, 255, 255, 0.1);
 }
