@@ -42,8 +42,8 @@ def aperture2():
 def aperture3():
     return render_template('aperture3.html')
 
-@app.route('/aperture_opening')
-def aperture_opening():
+@app.route('/aperturehome')
+def aperturehome():
     return render_template('aperture_opening.html')
 
 @app.route('/aperturedef')
