@@ -11,30 +11,45 @@
   </head>
 
   <body>
-    <header class="site-banner d-flex justify-content-between align-items-center px-4 py-2">
-      <a href="{{ url_for('home') }}" class="banner-link">How to Use a Camera</a>
-
-      <!-- Dropdown Menu -->
-      <div class="dropdown">
-        <button class="nav-btn btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-          Navigate
+    <header class="site-banner">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-black px-4">
+        <a class="navbar-brand banner-link" href="{{ url_for('home') }}">
+          How to Use a Camera
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
 
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-          <!-- Home -->
-          <li><a class="dropdown-item" href="{{ url_for('home') }}">Home</a></li>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+          <ul class="navbar-nav">
 
-          <!-- Lesson Dropdown -->
-          <li><a class="dropdown-item" href="{{ url_for('learning') }}">Lesson</a></li>
-          <li><a class="dropdown-item lesson-section" href="{{ url_for('camera') }}">Camera Front</a></li>
-          <li><a class="dropdown-item lesson-section" href="{{ url_for('back_of_camera') }}">Back of Camera</a></li>
-          <li><a class="dropdown-item back-camera-section" href="{{ url_for('aperture') }}">Aperture</a></li>
-          <li><a class="dropdown-item back-camera-section" href="{{ url_for('iso_grain') }}">Iso</a></li>
-          <li><a class="dropdown-item back-camera-section" href="{{ url_for('shutter_opening') }}">Shutter Speed</a></li>
-          <!-- Quiz -->
-          <li><a class="dropdown-item" href="{{ url_for('quiz') }}">Quiz</a></li>
-        </ul>
-      </div>
+            <!-- Home -->
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="{{ url_for('home') }}">Home</a>
+            </li>
+
+            <!-- Lesson Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle fw-bold" href="{{ url_for('learning') }}" id="lessonDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Lesson
+              </a>
+              <ul class="dropdown-menu text-start" aria-labelledby="lessonDropdown">
+                <li><a class="dropdown-item" href="{{ url_for('camera') }}">Camera Front</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('back_of_camera') }}">Back of Camera</a></li>
+                <li><a class="dropdown-item back-dropdown-item" href="{{ url_for('aperture') }}">Aperture</a></li>
+                <li><a class="dropdown-item back-dropdown-item" href="{{ url_for('iso_grain') }}">ISO</a></li>
+                <li><a class="dropdown-item back-dropdown-item" href="{{ url_for('shutter_opening') }}">Shutter Speed</a></li>
+              </ul>
+            </li>
+
+            <!-- Quiz -->
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="{{ url_for('quiz') }}">Quiz</a>
+            </li>
+
+          </ul>
+        </div>
+      </nav>
     </header>
 
     <div class="container mt-4">

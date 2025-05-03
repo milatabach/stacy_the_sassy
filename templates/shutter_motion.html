@@ -24,9 +24,13 @@
     </div>
   </div>
 
-  <div class="text-center">
-    <a href="{{ url_for('back_of_camera') }}" class="btn btn-secondary m-2">Back to Back of Camera</a>
-    <a href="{{ url_for('shutter_def') }}" class="btn btn-primary m-2">Next</a>
+  <div class="text-center my-4">
+    <a href="{{ url_for('shutter_opening') }}" class="back-btn">
+      ←Shutter Speed Home
+    </a>
+    <a href="{{ url_for('shutter_def') }}" class="next-btn">
+      Shutter Speed Continue→
+    </a>
   </div>
 </div>
 {% endblock %}

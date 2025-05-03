@@ -6,7 +6,6 @@
   <title>Camera Quiz – Question 4</title>
   <link rel="stylesheet" href="/static/main.css" />
   <style>
-    /* Container and sizing */
     .img-container {
       position: relative;
       display: inline-block;
@@ -14,94 +13,72 @@
       border: 5px solid #333;
       border-radius: 10px;
     }
-    /* Base image: will be blurred by aperture */
-    #img-base {
-      display: block;
+    #img-base, #img-sharp, #img-ghost1, #img-ghost2, #img-ghost3, #noiseOverlay {
       width: 400px;
       height: auto;
       border-radius: 10px;
-      transition: filter 0.2s ease;
-      z-index: 1;
-      position: relative;
     }
-    /* Sharp center: clipped region of the same image */
+    #img-base { position: relative; z-index: 1; }
     #img-sharp {
-      position: absolute;
-      top: 0; left: 0;
-      width: 400px;
-      height: auto;
-      border-radius: 10px;
+      position: absolute; top: 0; left: 0;
       clip-path: circle(50% at 50% 50%);
-      transition: clip-path 0.2s ease;
       z-index: 2;
     }
-    /* Ghost layers for shutter blur effect */
     #img-ghost1, #img-ghost2, #img-ghost3 {
-      position: absolute;
-      top: 0; left: 0;
-      width: 400px;
-      height: auto;
-      border-radius: 10px;
+      position: absolute; top: 0; left: 0; z-index: 3;
       transition: transform 0.2s ease, opacity 0.2s ease;
-      z-index: 3;
     }
-    /* Noise overlay for ISO */
     #noiseOverlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 400px;
-      height: 1536px;
-      border-radius: 10px;
+      position: absolute; top: 0; left: 0;
       mix-blend-mode: screen;
       pointer-events: none;
-      transition: opacity 0.2s ease;
       z-index: 4;
     }
-    /* Slider styling */
     .slider-container { max-width: 600px; margin: 20px auto; text-align: left; }
     .slider-container label { display: block; margin-bottom: 5px; }
     .slider-container input[type=range] { width: 100%; }
-    /* Feedback and button */
     .feedback { margin-top: 15px; font-weight: bold; }
-    .btn-next { opacity: 0.5; pointer-events: none; }
+
+    .next-btn.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 <body class="bg-black text-white">
   <div class="container text-center py-4">
     <h1>Question 4</h1>
     <p>She wants a disoriented 2000s look.</p>
-    <div id="quiz-image-wrapper" class="img-container">
-      <!-- Base image -->
+    <div class="img-container">
       <img id="img-base" src="/static/images/Quiz_4.png" alt="base layer" />
-      <!-- Sharp focus circle -->
       <img id="img-sharp" src="/static/images/Quiz_4.png" alt="sharp layer" />
-      <!-- Ghost layers for shutter effect -->
       <img id="img-ghost1" src="/static/images/Quiz_4.png" alt="ghost layer 1" />
       <img id="img-ghost2" src="/static/images/Quiz_4.png" alt="ghost layer 2" />
       <img id="img-ghost3" src="/static/images/Quiz_4.png" alt="ghost layer 3" />
-      <!-- Grain overlay -->
       <img id="noiseOverlay" src="/static/images/Noisy_long.png" alt="grain overlay" />
     </div>
 
     <div class="slider-container">
-      <label for="aperture">Aperture (f-stop): <span id="ap-val">8.0</span></label>
-      <input type="range" id="aperture" min="1.8" max="22" step="0.1" value="8.0" />
-      <label for="shutter">Shutter Speed (sec): <span id="sh-val">1/125</span></label>
-      <input type="range" id="shutter" min="0.001" max="2" step="0.001" value="0.5" />
-      <label for="iso">ISO: <span id="iso-val">100</span></label>
-      <input type="range" id="iso" min="100" max="3200" step="100" value="2200" />
+      <label for="aperture">Aperture (f-stop): <span id="ap-val"></span></label>
+      <input type="range" id="aperture" min="1.8" max="22" step="0.1" value="1.8" />
+      <label for="shutter">Shutter Speed (sec): <span id="sh-val"></span></label>
+      <input type="range" id="shutter" min="0.001" max="2" step="0.001" value="0.001" />
+      <label for="iso">ISO: <span id="iso-val"></span></label>
+      <input type="range" id="iso" min="100" max="3200" step="100" value="100" />
     </div>
 
     <div class="feedback" id="feedback"></div>
+
     <div class="mt-4">
-      <button id="checkBtn" class="btn btn-light">Check Answer</button>
-      <button id="nextBtn" onclick="location.href='/quiz/5'" class="btn btn-light btn-next">Next →</button>
+      <button id="checkBtn" class="quiz-btn">Check Answer</button>
+      <button id="nextBtn" class="next-btn disabled">Next →</button>
     </div>
   </div>
 
   <script>
     const MAX_TRIES = 3;
     let triesLeft = MAX_TRIES;
+    let passed = false;
 
     const ap = document.getElementById('aperture');
     const sh = document.getElementById('shutter');
@@ -133,14 +110,12 @@
       const S = parseFloat(sh.value);
       const I = parseFloat(iso.value);
 
-      // Aperture: blur base + focus mask
       const blurPx = mapRange(A, 1.8, 22, 15, 0);
       imgBase.style.filter = `blur(${blurPx.toFixed(1)}px)`;
       const focusPct = mapRange(A, 1.8, 22, 20, 100);
       sharp.style.clipPath = `inset(0% 20% 30% 20% round 8px)`;
       apVal.textContent = A.toFixed(1);
 
-      // Shutter: ghost offset & opacity
       const threshold = 1/6;
       const baseMax = 30;
       const extMax = 60;
@@ -152,20 +127,27 @@
         offset = mapRange(S, threshold, 1, baseMax, extMax);
         opacity = mapRange(S, threshold, 1, 0.5, 0.8);
       }
-      ghosts.forEach((g,i) => {
-        g.style.transform = `translateX(-${(offset * (i+1))/ghosts.length}px)`;
+      ghosts.forEach((g, i) => {
+        g.style.transform = `translateX(-${(offset * (i + 1)) / ghosts.length}px)`;
         g.style.opacity = opacity;
       });
-      shVal.textContent = `1/${Math.round(1/S)}`;
 
-      // ISO: grain overlay opacity
+      shVal.textContent = `1/${Math.round(1/S)}`;
       const grainOp = mapRange(I, 100, 3200, 0.4, 0);
       noise.style.opacity = grainOp;
       isoVal.textContent = I;
     }
 
+    function resetSliders() {
+      ap.value = ap.min;
+      sh.value = sh.min;
+      iso.value = iso.min;
+      updateImage();
+    }
+
     checkBtn.addEventListener('click', () => {
       if (triesLeft < 1) return;
+
       const A = parseFloat(ap.value);
       const S = parseFloat(sh.value);
       const I = parseFloat(iso.value);
@@ -176,31 +158,42 @@
         sessionStorage.setItem('quiz4', '1');
         feedback.textContent = '✅ Perfect!';
         feedback.style.color = 'lightgreen';
-        finish();
+        passed = true;
+        checkBtn.disabled = true;
+        nextBtn.classList.remove('disabled');
       } else {
         triesLeft--;
         if (triesLeft > 0) {
           feedback.textContent = `❌ Almost—${triesLeft} tries left.`;
           feedback.style.color = '#ffcc00';
+          resetSliders();
         } else {
           sessionStorage.setItem('quiz4', '0');
           feedback.textContent = '⚠️ Out of tries—moving on.';
           feedback.style.color = '#ff4d4d';
-          finish();
+          passed = true;
+          checkBtn.disabled = true;
+          nextBtn.classList.remove('disabled');
         }
       }
     });
 
-    function finish() {
-      checkBtn.disabled = true;
-      nextBtn.disabled = false;
-      nextBtn.classList.remove('btn-next');
-    }
+    nextBtn.addEventListener('click', function(event) {
+      if (!passed) {
+        event.preventDefault();
+        feedback.textContent = '⚠️ You must pass this question before continuing.';
+        feedback.style.color = '#ff4d4d';
+      } else {
+        window.location.href = '/quiz/5';
+      }
+    });
 
     [ap, sh, iso].forEach(el => el.addEventListener('input', updateImage));
+
     document.addEventListener('DOMContentLoaded', () => {
-      updateImage();
-      nextBtn.disabled = true;
+      resetSliders();
+      passed = false;
+      nextBtn.classList.add('disabled');
     });
   </script>
 </body>

@@ -7,80 +7,74 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
-
 # ——— CAMERA ANATOMY ———
 @app.route('/camera')
 def camera():
     return render_template('camera.html')
 
-@app.route('/back')
+@app.route('/camera/back')
 def back_of_camera():
     return render_template('back_of_camera.html')
-
 
 # ——— LEARNING MODULES ———
 @app.route('/learning')
 def learning():
     return render_template('learning.html')
 
-@app.route('/learning2')
-def learning2():
-    return render_template('learning2.html')
+@app.route('/learning/<int:step>')
+def learning_step(step):
+    return render_template(f'learning{step}.html')
 
-
-# ——— APERTURE / ISO / SHUTTER ———
-
+# ——— APERTURE ———
 @app.route('/aperture')
 def aperture():
     return render_template('aperture.html')
 
-@app.route('/aperture2')
+@app.route('/aperture/2')
 def aperture2():
     return render_template('aperture2.html')
 
-@app.route('/aperture3')
+@app.route('/aperture/3')
 def aperture3():
     return render_template('aperture3.html')
 
-@app.route('/aperture_opening')
+@app.route('/aperture/opening')
 def aperture_opening():
     return render_template('aperture_opening.html')
 
-@app.route('/aperturedef')
+@app.route('/aperture/definition')
 def aperture_def():
-	return render_template('aperture_def.html')
+    return render_template('aperture_def.html')
 
-@app.route('/iso_opening')
+# ——— ISO ———
+@app.route('/iso/opening')
 def iso_opening():
     return render_template('iso_opening.html')
 
-@app.route('/iso_grain')
+@app.route('/iso/grain')
 def iso_grain():
     return render_template('iso_grain.html')
 
+# ——— SHUTTER ———
 @app.route('/shutter')
 def shutter():
-	return render_template('shutter.html')
+    return render_template('shutter.html')
 
-# Route for Shutter Definition
-@app.route('/shutter_def')
+@app.route('/shutter/definition')
 def shutter_def():
     return render_template('shutter_def.html')
 
-# Route for Shutter and Exposure
-@app.route('/shutter_exposure')
+@app.route('/shutter/exposure')
 def shutter_exposure():
     return render_template('shutter_exposure.html')
 
-# Route for Shutter and Motion
-@app.route('/shutter_motion')
+@app.route('/shutter/motion')
 def shutter_motion():
     return render_template('shutter_motion.html')
 
-@app.route('/shutter_opening')
+@app.route('/shutter/opening')
 def shutter_opening():
-	return render_template('shutter_opening.html')
-
+    return render_template('shutter_opening.html')
 
 # ——— QUIZ FLOW ———
 
@@ -89,21 +83,19 @@ def shutter_opening():
 def mcq_quiz():
     return render_template('mcq_quiz.html')
 
-# 2) /quiz → redirect to start
+# 2) Shortcut /quiz → start page
 @app.route('/quiz')
 def quiz():
     return redirect('/quiz/start')
 
-# 3) Questions 1–5
+# 3) Dynamic quiz questions 1–5
 @app.route('/quiz/<int:qid>')
 def quiz_page(qid):
     if 1 <= qid <= 5:
         return render_template(f'quiz_{qid}.html')
     elif qid == 6:
-        # After question 5, go to results
         return redirect('/quiz/results')
     else:
-        # Out-of-range → restart
         return redirect('/quiz/start')
 
 # 4) Final results

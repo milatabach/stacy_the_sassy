@@ -17,8 +17,13 @@
          style="max-width: 100%; height: auto;" />
   </div>
 
-  <div class="text-center">
-    <a href="{{ url_for('back_of_camera') }}" class="btn btn-secondary m-2">Back to Back of Camera</a>
+  <div class="text-center my-4">
+    <a href="{{ url_for('back_of_camera') }}" class="back-btn">
+      ←Back of Camera
+    </a>
+    <a href="{{ url_for('iso_grain') }}" class="next-btn">
+      Iso →
+    </a>
   </div>
 </div>
 {% endblock %}
