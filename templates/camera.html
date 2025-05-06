@@ -12,9 +12,9 @@
         <img src="{{ url_for('static', filename='images/camera.png') }}" alt="Camera" class="img-fluid w-100 camera-img" />
 
         <!-- Star Buttons positioned with percentages -->
-        <button class="star-btn position-absolute" style="top: 20%; left: 10%;" onclick="showDescription('Sh')">⭐</button>
-        <button class="star-btn position-absolute" style="top: 15%; left: 12%;" onclick="showDescription('photo')">⭐</button>
-        <button class="star-btn position-absolute" style="top: 40%; right: 18%;" onclick="showDescription('Lense')">⭐</button>
+        <button class="star-btn position-absolute" style="top: 25%; left: 16%;" onclick="showDescription('Sh')">⭐</button>
+        <button class="star-btn position-absolute" style="top: 30%; left: 12%;" onclick="showDescription('photo')">⭐</button>
+        <button class="star-btn position-absolute" style="top: 50%; right: 25%;" onclick="showDescription('Lense')">⭐</button>
 
         <!-- Description Cards -->
         <div id="Sh" class="desc-card d-none">
@@ -49,10 +49,6 @@
       document.getElementById(id).classList.add('d-none');
     }
   </script>
- <h1 class="mt-5">As I mentioned earlier, ISO, aperture, and shutter speed are the three core settings that control camera exposure. Let's learn about Shutter Speed:</h1>
-      <div class="d-flex justify-content-center gap-4 mt-4">
-        <a href="{{ url_for('stacey_shutter') }}" class="feature-btn aperture-btn">Shutter Speed</a>
-</div>
 
 <div class="text-center my-4">
   <a href="{{ url_for('home') }}" class="back-btn">
