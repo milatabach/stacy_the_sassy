@@ -121,8 +121,8 @@
     const checkBtn = document.getElementById('checkBtn');
     const nextBtn = document.getElementById('nextBtn');
 
-    const correct = { aperture: 19.3, shutter: 1/1000, iso: 600 };
-    const tol = { aperture: 0.6, shutter: 0.01, iso: 100 };
+    const correct = { aperture: 22, shutter: 1/1000, iso: 3000 };
+    const tol = { aperture: 0.5, shutter: 0.2, iso: 200 };
 
     function mapRange(x, inMin, inMax, outMin, outMax) {
       return outMin + ((x - inMin) * (outMax - outMin)) / (inMax - inMin);
