@@ -2,40 +2,42 @@
 
 {% block content %}
   <div class="container text-center py-5">
-    <h1 class="mb-4">Camera Settings: Match the Definition!</h1>
+    <h1 class="mb-4">Camera Settings: True or False</h1>
 
-    <form id="quizForm" class="text-start mx-auto" style="max-width:400px;">
-      <p><strong>1. Controls how much light enters the lens.</strong></p>
+    <form id="quizForm" class="text-start mx-auto" style="max-width:600px;">
+      <p><strong>1. Increasing ISO is always the best first step to brighten a photo.</strong></p>
       <select name="q1">
         <option value="">--Choose an answer--</option>
-        <option value="Aperture">Aperture</option>
-        <option value="ISO">ISO</option>
-        <option value="Shutter Speed">Shutter Speed</option>
+        <option value="True">True</option>
+        <option value="False">False</option>
       </select>
 
-      <p><strong>2. Controls how sensitive the camera is to light.</strong></p>
+      <p class="mt-4"><strong>2. A higher f-stop number like f/16 means the aperture is wide open and allows more light into the camera.</strong></p>
       <select name="q2">
         <option value="">--Choose an answer--</option>
-        <option value="Aperture">Aperture</option>
-        <option value="ISO">ISO</option>
-        <option value="Shutter Speed">Shutter Speed</option>
+        <option value="True">True</option>
+        <option value="False">False</option>
       </select>
 
-      <p><strong>3. Controls how long the sensor is exposed to light.</strong></p>
+      <p class="mt-4"><strong>3. A shutter speed of 1/1000 is typically used to blur motion and create a sense of movement in a photo.</strong></p>
       <select name="q3">
         <option value="">--Choose an answer--</option>
-        <option value="Aperture">Aperture</option>
-        <option value="ISO">ISO</option>
-        <option value="Shutter Speed">Shutter Speed</option>
+        <option value="True">True</option>
+        <option value="False">False</option>
+      </select>
+
+      <p class="mt-4"><strong>4. According to the 180-degree shutter rule, if you're shooting at 30 frames per second, your shutter speed should be around 1/60.</strong></p>
+      <select name="q4">
+        <option value="">--Choose an answer--</option>
+        <option value="True">True</option>
+        <option value="False">False</option>
       </select>
     </form>
 
-    <!-- Submit button -->
     <div class="mt-4">
       <button id="checkBtn" class="quiz-btn">Submit Answers</button>
     </div>
 
-    <!-- Navigation buttons -->
     <div class="mt-3 d-flex justify-content-center gap-3">
       <a href="{{ url_for('home') }}" class="back-btn">← Home</a>
       <button id="nextBtn" class="next-btn disabled">Next Question →</button>
@@ -60,22 +62,22 @@
       const a = form['q1'].value;
       const b = form['q2'].value;
       const c = form['q3'].value;
+      const d = form['q4'].value;
 
-  
-      if (!a || !b || !c) {
-        feedback.textContent = '⚠️ Please select an answer for each question before submitting.';
+      if (!a || !b || !c || !d) {
+        feedback.textContent = '⚠️ Please answer all questions before submitting.';
         feedback.style.color = '#ff4d4d';
-        return;  
+        return;
       }
-    
 
       let score = 0;
-      if (a === 'Aperture') score++;
-      if (b === 'ISO') score++;
-      if (c === 'Shutter Speed') score++;
+      if (a === 'False') score++;
+      if (b === 'False') score++;
+      if (c === 'False') score++;
+      if (d === 'True') score++;
 
-      if (score === 3) {
-        sessionStorage.setItem('mcqScore', '1');
+      if (score === 4) {
+        sessionStorage.setItem('trueFalseScore', '4');
         feedback.textContent = '✅ All correct!';
         feedback.style.color = 'lightgreen';
         passed = true;
@@ -84,11 +86,11 @@
       } else {
         triesLeft--;
         if (triesLeft > 0) {
-          feedback.textContent = `❌ ${score}/3. ${triesLeft} tries left.`;
+          feedback.textContent = `❌ ${score}/4. ${triesLeft} tries left.`;
           feedback.style.color = '#ffcc00';
         } else {
-          sessionStorage.setItem('mcqScore', score > 0 ? '1' : '0');
-          feedback.textContent = `⚠️ Final score ${score}/3. Moving on.`;
+          sessionStorage.setItem('trueFalseScore', score.toString());
+          feedback.textContent = `⚠️ Final score ${score}/4. Moving on.`;
           feedback.style.color = '#ff4d4d';
           passed = true;
           checkBtn.disabled = true;
@@ -103,17 +105,18 @@
         feedback.textContent = '⚠️ You must pass this question first before continuing.';
         feedback.style.color = '#ff4d4d';
       } else {
-        window.location.href = '/tf_quiz';
+        window.location.href = '/quiz/1';
       }
     });
 
     const selects = form.querySelectorAll('select');
     selects.forEach(select => {
       select.addEventListener('change', () => {
-        if (feedback.textContent.includes('Please select an answer')) {
+        if (feedback.textContent.includes('Please answer all questions')) {
           feedback.textContent = '';
         }
       });
     });
   </script>
 {% endblock %}
+

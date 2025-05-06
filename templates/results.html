@@ -1,33 +1,37 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<body class="bg-black text-white">
-  <div class="container text-center py-5">
-    <h1>Your Results</h1>
-    <p id="mcq-score" class="mb-3"></p>
-    <p id="stacy-score" class="mb-3"></p>
-    <p id="total-score" class="fw-bold fs-4"></p>
-    <div class="mt-4">
-      <a href="/" class="btn back-btn">← Home</a>
-      <button class="btn quiz-btn" onclick="sessionStorage.clear(); location.href='/quiz/start';">
-        Retry Quiz
-      </button>
+  <body class="bg-black text-white">
+    <div class="container text-center py-5">
+      <h1>Your Results</h1>
+      <p id="mcq-score" class="mb-3"></p>
+      <p id="true-false-score" class="mb-3"></p> <!-- FIXED: was missing -->
+      <p id="stacy-score" class="mb-3"></p>
+      <p id="total-score" class="fw-bold fs-4"></p> <!-- FIXED: no duplicate -->
+
+      <div class="mt-4">
+        <a href="/" class="btn back-btn">← Home</a>
+        <button class="btn quiz-btn" onclick="sessionStorage.clear(); location.href='/quiz/start';">
+          Retry Quiz
+        </button>
+      </div>
     </div>
-  </div>
 
-  <script>
-    // read MCQ
-    const mcqScore   = parseInt(sessionStorage.getItem('mcqScore') || '0', 10);
-    // read the 5 stacy quiz scores
-    let stacyTotal = 0;
-    for (let i = 1; i <= 5; i++) {
-      stacyTotal += parseInt(sessionStorage.getItem(`quiz${i}`) || '0', 10);
-    }
-    // display
-    document.getElementById('mcq-score').textContent   = `Warm-up: ${mcqScore} / 1`;
-    document.getElementById('stacy-score').textContent = `Stacy Quiz: ${stacyTotal} / 5`;
-    document.getElementById('total-score').textContent = `Total Score: ${mcqScore + stacyTotal} / 6`;
-  </script>
+    <script>
+      // Read scores from sessionStorage
+      const mcqScore       = parseInt(sessionStorage.getItem('mcqScore') || '0', 10);
+      const trueFalseScore = parseInt(sessionStorage.getItem('trueFalseScore') || '0', 10);
 
+      let stacyTotal = 0;
+      for (let i = 1; i <= 5; i++) {
+        stacyTotal += parseInt(sessionStorage.getItem(`quiz${i}`) || '0', 10);
+      }
+
+      document.getElementById('mcq-score').textContent        = `Warm-up: ${mcqScore} / 1`;
+      document.getElementById('true-false-score').textContent = `True/False: ${trueFalseScore} / 4`;
+      document.getElementById('stacy-score').textContent      = `Stacy Quiz: ${stacyTotal} / 5`;
+      document.getElementById('total-score').textContent      = `Total Score: ${mcqScore + trueFalseScore + stacyTotal} / 10`;
+    </script>
+  </body>
 {% endblock %}
 

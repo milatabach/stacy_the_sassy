@@ -103,7 +103,7 @@
         feedback.textContent = '⚠️ You must pass this question first before continuing.';
         feedback.style.color = '#ff4d4d';
       } else {
-        window.location.href = '/tf_quiz';
+        window.location.href = '/quiz/1';
       }
     });
 
