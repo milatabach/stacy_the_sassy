@@ -137,7 +137,7 @@
       const blurPx = mapRange(A, 1.8, 22, 15, 0);
       imgBase.style.filter = `blur(${blurPx.toFixed(1)}px)`;
       const focusPct = mapRange(A, 1.8, 22, 20, 100);
-      sharp.style.clipPath = `circle(${focusPct}% at 50% 50%)`;
+      sharp.style.clipPath = `inset(0% 20% 20% 20% round 8px)`;
       apVal.textContent = A.toFixed(1);
 
       // Shutter: ghost offset & opacity
