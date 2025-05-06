@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container text-center py-4">
+  <div class="row justify-content-center align-items-center mt-4">
+    <div class="col-md-auto">
+      <img src="{{ url_for('static', filename='images/stacy.png') }}" alt="Bratz Doll - Stacy" class="img-fluid rounded stacy-img" />
+    </div>
+    <div class="col-md-auto">
+      <div class="speech-bubble">
+      Okay, the next thing you are going to learn about aperture. Part of ME looking good in my photos is that im in focus...this is important! </div>
+    </div>
+  </div>
+</div>
+
+<div class="text-center">
+  <a href="{{ url_for('back_of_camera') }}" class="back-btn">← Back to Back of Camera</a>
+  <a href="{{ url_for('aperture_opening') }}" class="next-btn">Next →</a>
+</div>
+
+{% endblock %}
+

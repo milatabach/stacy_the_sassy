@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container text-center py-5">
+  <h1 class="mb-4">Shutter Speed Recap</h1>
+
+  <img src="{{ url_for('static', filename='images/shutter.png') }}" 
+       alt="Shutter speed diagram" 
+       class="img-fluid w-100 camera-img rounded shadow" 
+       style="max-width: 800px;" />
+  
+  <p class="mt-4 lead">
+    Shutter speed controls how long the camera’s shutter stays open. A fast shutter freezes action, while a slow shutter captures motion blur.
+  </p>
+
+  <div class="text-center">
+    <a href="{{ url_for('shutter_def') }}" class="back-btn">
+      ← Back 
+    </a>
+    <a href="{{ url_for('camera') }}" class="quiz-btn">
+     Back to Front of Camera→
+    </a>
+  </div>
+</div>
+{% endblock %}
+
+

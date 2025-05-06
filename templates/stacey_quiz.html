@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container text-center py-4">
+  <div class="row justify-content-center align-items-center mt-4">
+    <div class="col-md-auto">
+      <img src="{{ url_for('static', filename='images/stacy.png') }}" alt="Bratz Doll - Stacy" class="img-fluid rounded stacy-img" />
+    </div>
+    <div class="col-md-auto">
+      <div class="speech-bubble">
+      Lets see if you are an expert. Pass this quiz and you are hired!! xoxo </div>
+    </div>
+  </div>
+</div>
+
+<div class="text-center">
+  <a href="{{ url_for('home') }}" class="back-btn">← Home</a>
+  <a href="{{ url_for('quiz') }}" class="next-btn">Next →</a>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container py-5" style="background-color: black; color: white;">
+  <h1 class="text-center mb-4">ISO and Grain</h1>
+
+  <p class="lead text-center mb-4">
+    When you increase ISO to make your pictures brighter, you also introduce grain, which is called "noise."
+    While a higher ISO helps capture images in low light, it comes at the cost of reduced image quality.
+  </p>
+
+  <p class="lead text-center mb-4">
+    To get the best quality, you should always keep your ISO levels as low as possible, and instead adjust your aperture or shutter speed first to brighten the photo.
+    A good ISO range for clean, sharp images is usually between 100 and 1600, depending on your lighting conditions and camera.
+  </p>
+
+  <div class="text-center mb-4">
+    <img src="https://www.digitaltrends.com/wp-content/uploads/2017/01/ISO-Example-Image.jpg?fit=650%2C433&p=1" 
+         alt="ISO noise example" 
+         class="img-fluid mb-2" 
+         style="max-width: 100%; height: auto;" />
+    <div class="small text-muted">
+      Example showing how higher ISO levels introduce more noise into a photo.
+    </div>
+  </div>
+
+  <div class="text-center my-4">
+    <a href="{{ url_for('back_of_camera') }}" class="back-btn">
+      ←Back of Camera
+    </a>
+    <a href="{{ url_for('shutter_opening') }}" class="next-btn">
+      Shutter Speed→
+    </a>
+  </div>
+</div>
+{% endblock %}
+

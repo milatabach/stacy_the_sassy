@@ -20,7 +20,7 @@
         <div id="Sh" class="desc-card d-none">
           <button class="close-btn" onclick="closeDescription('Sh')">×</button>
           <p>This is where you control the shutter speed — the length of time the camera's shutter stays open, allowing light to reach the sensor and create an image.</p>
-          <a href="{{ url_for('shutter_opening') }}" class="btn btn-light fw-bold px-4 py-2">
+          <a href="{{ url_for('stacey_shutter') }}" class="btn btn-light fw-bold px-4 py-2">
             Learn more.
           </a>
         </div>
@@ -49,10 +49,14 @@
       document.getElementById(id).classList.add('d-none');
     }
   </script>
+ <h1 class="mt-5">As I mentioned earlier, ISO, aperture, and shutter speed are the three core settings that control camera exposure. Let's learn about Shutter Speed:</h1>
+      <div class="d-flex justify-content-center gap-4 mt-4">
+        <a href="{{ url_for('stacey_shutter') }}" class="feature-btn aperture-btn">Shutter Speed</a>
+</div>
 
 <div class="text-center my-4">
-  <a href="{{ url_for('learning') }}" class="back-btn">
-    ← Lesson Home 
+  <a href="{{ url_for('home') }}" class="back-btn">
+    ← Home
   </a>
   <a href="{{ url_for('back_of_camera') }}" class="next-btn">
     Back of Camera →

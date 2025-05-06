@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container py-5" style="background-color: black; color: white;">
+  <h1 class="text-center mb-4">Understanding F-Stop</h1>
+
+  <p class="lead text-center mb-4">
+    The aperture size is measured using an "f-stop" number, written as f/ followed by a number (for example, f/2.8 or f/16).
+    The f-stop number describes the ratio of the lens's focal length to the size of the aperture opening.
+  </p>
+
+  <p class="lead text-center mb-4">
+    A lower f-stop (like f/1.8) means the aperture is wide open, allowing a lot of light in and creating a shallow depth of field.
+    A higher f-stop (like f/16) means the aperture is stopped down, letting in less light and making more of the image stay in focus.
+  </p>
+
+  <p class="lead text-center mb-4">
+    Common f-stop numbers you might see are f/1.4, f/2, f/2.8, f/4, f/5.6, f/8, f/11, and f/16.
+  </p>
+
+  <div class="text-center">
+    <a href="{{ url_for('aperture3') }}" class="back-btn">Back</a>
+<a href="{{ url_for('aperture') }}" class="next-btn">Continue Aperture</a>
+  </div>
+</div>
+{% endblock %}
+

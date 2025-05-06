@@ -7,11 +7,33 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
+@app.route("/stacey_quiz")
+def stacey_quiz():
+    return render_template("stacey_quiz.html")
+
 # ——— CAMERA ANATOMY ———
 @app.route('/camera')
 def camera():
     return render_template('camera.html')
+@app.route('/stacey2')
+def stacey2():
+	return render_template('stacey2.html')
 
+@app.route("/stacey3")
+def stacey3():
+    return render_template("stacey3.html")
+
+@app.route("/stacey_iso")
+def stacey_iso():
+    return render_template("stacey_iso.html")
+
+@app.route("/stacey_aperture")
+def stacey_aperture():
+    return render_template("stacey_aperture.html")
+
+@app.route("/stacey_shutter")
+def stacey_shutter():
+    return render_template("stacey_shutter.html")
 @app.route('/camera/back')
 def back_of_camera():
     return render_template('back_of_camera.html')
@@ -20,6 +42,10 @@ def back_of_camera():
 @app.route('/learning')
 def learning():
     return render_template('learning.html')
+
+@app.route('/learning2')
+def learning2():
+	return render_template('learning2.html')
 
 @app.route('/learning/<int:step>')
 def learning_step(step):

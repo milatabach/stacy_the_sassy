@@ -34,17 +34,18 @@
                 Lesson
               </a>
               <ul class="dropdown-menu text-start" aria-labelledby="lessonDropdown">
+		<li><a class="dropdown-item" href="{{ url_for('learning') }}">Introduction</a></li>
                 <li><a class="dropdown-item" href="{{ url_for('camera') }}">Camera Front</a></li>
-                <li><a class="dropdown-item" href="{{ url_for('back_of_camera') }}">Back of Camera</a></li>
-                <li><a class="dropdown-item back-dropdown-item" href="{{ url_for('aperture') }}">Aperture</a></li>
-                <li><a class="dropdown-item back-dropdown-item" href="{{ url_for('iso_grain') }}">ISO</a></li>
-                <li><a class="dropdown-item back-dropdown-item" href="{{ url_for('shutter_opening') }}">Shutter Speed</a></li>
+                <li><a class="dropdown-item back-dropdown-item" href="{{ url_for('stacey_shutter') }}">Shutter Speed</a></li>
+		<li><a class="dropdown-item" href="{{ url_for('back_of_camera') }}">Back of Camera</a></li>
+                <li><a class="dropdown-item back-dropdown-item" href="{{ url_for('stacey_aperture') }}">Aperture</a></li>
+                <li><a class="dropdown-item back-dropdown-item" href="{{ url_for('stacey_iso') }}">ISO</a></li>
               </ul>
             </li>
 
             <!-- Quiz -->
             <li class="nav-item">
-              <a class="nav-link fw-bold" href="{{ url_for('quiz') }}">Quiz</a>
+              <a class="nav-link fw-bold" href="{{ url_for('stacey_quiz') }}">Quiz</a>
             </li>
 
           </ul>
