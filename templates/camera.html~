@@ -19,9 +19,7 @@
         <!-- Description Cards -->
         <div id="Sh" class="desc-card d-none">
           <button class="close-btn" onclick="closeDescription('Sh')">×</button>
-          <p>This is where you control the shutter speed — the length of time the camera's shutter stays open, allowing light to reach the sensor and create an image.</p>
-          <a href="{{ url_for('stacey_shutter') }}" class="btn btn-light fw-bold px-4 py-2">
-            Learn more.
+          <p>This is where you control the shutter speed — you will learn more about that soon!.</p>
           </a>
         </div>
 
