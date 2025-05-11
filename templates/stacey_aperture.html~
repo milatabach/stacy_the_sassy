@@ -9,15 +9,14 @@
     </div>
     <div class="col-md-auto">
       <div class="speech-bubble">
-	The first thing you will dive into is the shutter speed. Pay attention and take notes. I dont want my pictures looking blurry!
-      </div>
+      Okay, the next thing you are going to learn about aperture. Part of ME looking good in my photos is that im in focus...this is important! </div>
     </div>
   </div>
 </div>
 
 <div class="buttons mt-4 text-center">
   <a href="{{ url_for('back_of_camera') }}" class="back-btn">← Back to Back of Camera</a>
-  <a href="{{ url_for('shutter_opening') }}" class="next-btn">Continue Shutter Speed →</a>
+  <a href="{{ url_for('aperture_opening') }}" class="next-btn">Continue Aperture →</a>
 </div>
 
 {% endblock %}

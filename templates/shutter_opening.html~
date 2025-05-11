@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container py-5" style="background-color: black; color: white;">
+  <h1 class="text-center mb-4">Introduction to Shutter Speed</h1>
+
+  <p class="lead text-center mb-4">
+    Shutter speed is the length of time the camera’s shutter is open, exposing light from the outside world onto the camera sensor (or film).
+    In other words, it’s how long your camera spends taking a photo.
+  </p>
+
+  <div class="text-center mb-4">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/Appearance_of_the_shutter_at_various_speeds.gif" 
+         alt="Shutter speed examples" 
+         class="img-fluid mb-2"
+         style="width: 90%; max-width: 1000px;" />
+    <div class="small text-muted">
+      This animation shows how the shutter appears at different speeds.
+    </div>
+  </div>
+
+  <div class="buttons mt-4 text-center">
+    <a href="{{ url_for('stacey_shutter') }}" class="back-btn">
+      ←Back
+    </a>
+    <a href="{{ url_for('shutter_exposure') }}" class="next-btn">
+      Continue Shutter Speed→
+    </a>
+  </div>
+</div>
+{% endblock %}
+
