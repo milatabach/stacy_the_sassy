@@ -11,6 +11,10 @@ def home():
 def stacey_quiz():
     return render_template("stacey_quiz.html")
 
+@app.route('/tf_quiz')
+def tf_quiz():
+	return render_template("tf_quiz.html")
+
 # ——— CAMERA ANATOMY ———
 @app.route('/camera')
 def camera():
