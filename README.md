@@ -3,6 +3,9 @@
 
 This website is a beginner-friendly website built with Python (Flask) to teach users how to use a camera. It walks through concepts like aperture, ISO, and shutter speed, featuring fun visuals and interactive examples.
 
+![Camera with paint](static/images/home.png)
+
+
 ---
 
 ## Project Structure
